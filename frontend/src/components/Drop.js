@@ -33,7 +33,7 @@ const Drop = ({ scrollIntoView }) => {
       setUploadStatus("Uploading...");
 
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://localhost:8000/upload_image/", true);
+      xhr.open("POST", "https://metashield.onrender.com/upload_image/", true);  // Updated URL
 
       xhr.upload.onprogress = (event) => {
         if (event.lengthComputable) {
@@ -49,7 +49,7 @@ const Drop = ({ scrollIntoView }) => {
           setUploadStatus("✅ Upload successful!");
 
           const metadataRes = await fetch(
-            `http://localhost:8000/image_metadata/${data.filename}`
+            `https://metashield.onrender.com/image_metadata/${data.filename}`  // Updated URL
           );
           const exifData = await metadataRes.json();
 
