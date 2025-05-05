@@ -6,16 +6,14 @@ from services.metadata_service import extract_exif_data
 
 app = FastAPI()
 
-# Enable CORS so frontend can communicate with this backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Update for production if needed
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Upload folder
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -23,17 +21,11 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 async def upload_image(file: UploadFile = File(...)):
     try:
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-
-        # Save file to disk
         with open(file_path, "wb") as f:
             f.write(await file.read())
 
         print(f"Uploaded: {file.filename}")
-        
-        # Extract EXIF data
         metadata = extract_exif_data(file_path)
-        
-        # Return success along with the extracted metadata
         return JSONResponse(content={"success": True, "filename": file.filename, "metadata": metadata})
 
     except Exception as e:
@@ -49,6 +41,5 @@ async def image_metadata(filename: str):
     if not os.path.exists(file_path):
         return JSONResponse(content={"error": "File not found"}, status_code=404)
 
-    # Extract EXIF data from the image
     metadata = extract_exif_data(file_path)
     return JSONResponse(content=metadata)
