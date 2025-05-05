@@ -1,0 +1,10 @@
+# For React frontend
+node_modules/
+build/
+.env
+
+# For Python backend
+__pycache__/
+*.pyc
+*.pyo
+.env
