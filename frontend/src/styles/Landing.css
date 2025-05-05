@@ -1,0 +1,226 @@
+/* General Layout */
+.landing-container {
+    background: #f9fafb;
+    color: #0a2540;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+/* Main Heading */
+.main-heading {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #0038a0, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+/* Intro Description */
+.intro-description {
+    font-size: 1.4rem;
+    color: #4a6fa5;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Clean Button */
+.clean-button {
+    background-color: white; /* White background */
+    color: black; /* Black bold text */
+    border: 2px solid #007bff; /* Blue border */
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .clean-button:hover,
+  .clean-button:focus {
+    background-color: #007bff; /* Blue background on hover */
+    color: white; /* White text on hover */
+    border-color: #0056b3; /* Darker blue border */
+  }
+  
+  .clean-button:active {
+    background-color: #0056b3; /* Dark blue when clicked */
+    border-color: #003f7f; /* Even darker blue border on click */
+  }
+  
+/* Feature Carousel Section */
+.carousel-section {
+    margin-top: 80px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Carousel Card */
+.carousel-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    width: 250px;
+    height: 350px;
+    opacity: 1;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    animation: fadeInCard 1s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-card.focused {
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.2); /* Brighten the focused card */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); /* Blue glow effect */
+}
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+
+.carousel-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+/* Card Info */
+.card-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #1e293b;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-info h3 {
+    font-size: 1.2rem;
+    color: #1d4ed8;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    font-size: 1rem;
+    color: #475569;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* Hover Effects */
+.carousel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+/* Spacer */
+.spacer {
+    margin: 100px 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-container {
+        gap: 1.5rem;
+        height: 300px;
+    }
+
+    .carousel-card {
+        width: 220px;
+        height: 300px;
+    }
+
+    .carousel-heading {
+        font-size: 2.5rem;
+    }
+
+    .carousel-description {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-card {
+        width: 180px;
+        height: 250px;
+    }
+
+    .carousel-heading {
+        font-size: 2rem;
+    }
+
+    .carousel-description {
+        font-size: 1rem;
+    }
+}
